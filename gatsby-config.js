@@ -10,6 +10,7 @@ const constants = require("./constants")
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  graphqlTypegen: true,
   siteMetadata: {
     title: constants.WEBSITE_TITLE,
     description: constants.WEBSITE_DESCRIPTION,
@@ -17,6 +18,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    'gatsby-plugin-postcss',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -122,7 +124,6 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `Spectral`,
           `Bricolage+Grotesque\:opsz,wght@10..48,400;10..48,700&display=swap` // you can also specify font weights and styles
         ],
         display: 'swap'

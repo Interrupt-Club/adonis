@@ -1,5 +1,5 @@
 ---
-title: My Second Post!
+title: My Second Post! This is a little long title for this blog title
 date: "2015-05-06T23:46:37.121Z"
 ---
 

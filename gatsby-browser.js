@@ -1,6 +1,8 @@
 // custom typefaces
-// import '@fontsource/syne/400.css';
-// import '@fontsource/syne/700.css';
+import '@fontsource/lexend/400.css';
+
+// tailwind css
+import './src/styles/global.css'
 
 // normalize CSS across browsers
 import "./src/styles/normalize.css"

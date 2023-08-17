@@ -2,6 +2,7 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import BreadCrumb from "../components/breadcrumb"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
@@ -16,6 +17,7 @@ const BlogPostTemplate = ({
         itemScope
         itemType="http://schema.org/Article"
       >
+        <BreadCrumb/>
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
@@ -24,7 +26,6 @@ const BlogPostTemplate = ({
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
-        <hr />
       </article>
       <nav className="blog-post-nav">
         <ul
