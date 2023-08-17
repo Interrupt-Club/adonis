@@ -8,7 +8,7 @@ import Newsletter from "./newsletter"
 const Layout: React.FC<PageProps<Queries.NotFoundPageQuery>> = ({ location, children }) => {
   return (
     <div className="content-area">
-      <Header/>
+      <Header location={location}/>
       <ContentArea>{children}</ContentArea>
       <Newsletter/>
       <Footer />

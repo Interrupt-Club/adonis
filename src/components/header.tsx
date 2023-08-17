@@ -1,7 +1,7 @@
-import { Link } from "gatsby"
+import { Link, PageProps } from "gatsby"
 import * as React from "react"
 
-const Header: React.FC = () => {
+const Header: React.FC<PageProps>= ({location}) => {
 
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
