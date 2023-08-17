@@ -9,7 +9,7 @@ type DataProps = {
   }
 }
 
-const UsingTypescript: React.FC<PageProps<DataProps>> = ({
+const AboutPage: React.FC<PageProps<DataProps>> = ({
   data,
   path,
   location,
@@ -40,7 +40,7 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({
   </Layout>
 )
 
-export default UsingTypescript
+export default AboutPage
 
 export const query = graphql`
   {

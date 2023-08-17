@@ -8,5 +8,12 @@ module.exports = {
 
     // WEBSITE ROUTING
     WEBSITE_BASE_URL: "/",
-    WEBSITE_COMPLETE_URL: "https://www.interrupt.club"
+    WEBSITE_COMPLETE_URL: "https://www.interrupt.club",
+
+    // SOCIAL
+    INSTAGRAM_LINK: "https://www.instagram.com/interrupt.club",
+    FB_LINK: "https://www.instagram.com/interrupt.club",
+    DISCORD_LINK: "https://www.instagram.com/interrupt.club",
+    TWITTER_LINK: "https://www.instagram.com/interrupt.club",
+    GITHUB_LINK: "https://www.instagram.com/interrupt.club",
 }

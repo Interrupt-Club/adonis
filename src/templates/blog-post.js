@@ -1,8 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-import BreadCrumb from "../components/breadcrumb"
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
@@ -11,17 +9,18 @@ const BlogPostTemplate = ({
   const siteTitle = site.siteMetadata?.title || `Title`
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location}>
+
+        <header>
+          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <p>{post.frontmatter.date}</p>
+        </header>
+
       <article
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article"
       >
-        <BreadCrumb/>
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
@@ -57,14 +56,14 @@ const BlogPostTemplate = ({
   )
 }
 
-export const Head = ({ data: { markdownRemark: post } }) => {
-  return (
-    <Seo
-      title={post.frontmatter.title}
-      description={post.frontmatter.description || post.excerpt}
-    />
-  )
-}
+// export const Head = ({ data: { markdownRemark: post } }) => {
+//   return (
+//     <Seo
+//       title={post.frontmatter.title}
+//       description={post.frontmatter.description || post.excerpt}
+//     />
+//   )
+// }
 
 export default BlogPostTemplate
 
