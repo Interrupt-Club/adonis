@@ -723,7 +723,9 @@ type FloatQueryOperatorInput = {
 type Frontmatter = {
   readonly date: Maybe<Scalars['Date']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly permalink: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
+  readonly topics: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 
@@ -737,19 +739,25 @@ type Frontmatter_dateArgs = {
 type FrontmatterFieldSelector = {
   readonly date: InputMaybe<FieldSelectorEnum>;
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly permalink: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
+  readonly topics: InputMaybe<FieldSelectorEnum>;
 };
 
 type FrontmatterFilterInput = {
   readonly date: InputMaybe<DateQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly permalink: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly topics: InputMaybe<StringQueryOperatorInput>;
 };
 
 type FrontmatterSortInput = {
   readonly date: InputMaybe<SortOrderEnum>;
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly permalink: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
+  readonly topics: InputMaybe<SortOrderEnum>;
 };
 
 type GatsbyImageDataQueryOperatorInput = {
@@ -2701,7 +2709,7 @@ type BlogPostBySlugQueryVariables = Exact<{
 }>;
 
 
-type BlogPostBySlugQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly markdownRemark: { readonly id: string, readonly excerpt: string | null, readonly html: string | null, readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly description: string | null } | null } | null, readonly previous: { readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly title: string | null } | null } | null, readonly next: { readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly title: string | null } | null } | null };
+type BlogPostBySlugQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly markdownRemark: { readonly id: string, readonly excerpt: string | null, readonly html: string | null, readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly description: string | null } | null } | null, readonly previous: { readonly frontmatter: { readonly title: string | null, readonly permalink: string | null } | null } | null, readonly next: { readonly frontmatter: { readonly title: string | null, readonly permalink: string | null } | null } | null };
 
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
@@ -2732,12 +2740,19 @@ type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: 
 type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type IndexPageQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null } | null }> } };
+type IndexPageQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly description: string | null, readonly permalink: string | null } | null }> } };
 
 type NotFoundPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type NotFoundPageQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null };
+
+type TopicPageQueryVariables = Exact<{
+  topic: Scalars['String'];
+}>;
+
+
+type TopicPageQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null, readonly allMarkdownRemark: { readonly nodes: ReadonlyArray<{ readonly excerpt: string | null, readonly fields: { readonly slug: string | null } | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly permalink: string | null } | null }> } };
 
 
 }

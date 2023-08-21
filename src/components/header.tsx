@@ -31,7 +31,7 @@ const Header: React.FC<PageProps>= ({location}) => {
     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
         <li>
-          <a href="#" className="header-link block py-2 pl-3 pr-4 text-white rounded md:bg-transparent md:p-0" aria-current="page">Home</a>
+          <a href="#" className="header-link block py-2 pl-3 pr-4 rounded md:p-0" aria-current="page">Home</a>
         </li>
       </ul>
     </div>

@@ -9,36 +9,28 @@ const Footer: React.FC = () => {
     <div className="mx-auto w-full max-w-screen-xl">
       <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
         <div>
-            <h2 className="mb-6  footer-header text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+            <h2 className="mb-6  footer-header text-sm font-semibold text-gray-900 uppercase dark:text-white">Interrupt.Club</h2>
+            <p>This is a sample text</p>
+        </div>
+        <div>
+            <h2 className="mb-6 footer-header text-sm font-semibold text-gray-900 uppercase dark:text-white">Support</h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                    <a href="#" className=" hover:underline">About</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Careers</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Brand Center</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Blog</a>
+                    <Link to="/contact-us" className="hover:underline">Contact Us</Link>
                 </li>
             </ul>
         </div>
         <div>
-            <h2 className="mb-6 footer-header text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
+            <h2 className="mb-6 text-sm footer-header font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                    <a href="#" className="hover:underline">Discord Server</a>
+                    <Link to="/" className="hover:underline">Home</Link>
                 </li>
                 <li className="mb-4">
-                    <a href="#" className="hover:underline">Twitter</a>
+                    <Link to="/about" className="hover:underline">About</Link>
                 </li>
                 <li className="mb-4">
-                    <a href="#" className="hover:underline">Facebook</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Contact Us</a>
+                    <Link to="/blog" className="hover:underline">Blog</Link>
                 </li>
             </ul>
         </div>
@@ -46,30 +38,13 @@ const Footer: React.FC = () => {
             <h2 className="mb-6 text-sm footer-header font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                    <a href="#" className="hover:underline">Privacy Policy</a>
+                    <Link to="/disclaimer" className="hover:underline">Disclaimer</Link>
                 </li>
                 <li className="mb-4">
-                    <a href="#" className="hover:underline">Licensing</a>
+                    <Link to="/terms-and-conditions" className="hover:underline">Terms and Conditions</Link>
                 </li>
                 <li className="mb-4">
-                    <a href="#" className="hover:underline">Terms &amp; Conditions</a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2 className="mb-6 text-sm footer-header font-semibold text-gray-900 uppercase dark:text-white">Download</h2>
-            <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">iOS</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Android</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">Windows</a>
-                </li>
-                <li className="mb-4">
-                    <a href="#" className="hover:underline">MacOS</a>
+                    <Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                 </li>
             </ul>
         </div>

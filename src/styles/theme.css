@@ -10,12 +10,14 @@
 
     --color-baseWhite: #fff;
     --color-bg: #171717;
-    --color-textGreyLight: #8B8B8B;
     --color-bgLight: rgb(35, 35, 35);
     --color-primary: rgb(20, 20, 20);
     --color-secondary: rgb(12, 12, 12);
+    --color-textPrimary:#171717;
+    --color-textGreyLight: #8B8B8B;
     --color-textGrey: rgb(123, 123, 123);
-    --color-green: #1B57E6;
+    --color-green: rgb(0, 105, 66);
+    --color-blue: #1B57E6;
 
     --fontWeight-primary-normal: 400;
     --fontWeight-secondary-normal: 400;

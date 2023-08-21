@@ -10,6 +10,7 @@ const constants = require("./constants")
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  trailingSlash: `never`,
   graphqlTypegen: true,
   siteMetadata: {
     title: constants.WEBSITE_TITLE,
@@ -124,7 +125,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `Bricolage+Grotesque\:opsz,wght@10..48,400;10..48,700&display=swap` // you can also specify font weights and styles
+          `Bricolage+Grotesque\:opsz,wght@10..48,400;10..48,700&display=swap`
         ],
         display: 'swap'
       }

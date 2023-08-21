@@ -8,7 +8,6 @@ const BlogPostTemplate = ({
 }) => {
   return (
     <Layout location={location}>
-
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
@@ -36,14 +35,14 @@ const BlogPostTemplate = ({
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              <Link to={previous.frontmatter.permalink} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              <Link to={next.frontmatter.permalink} rel="next">
                 {next.frontmatter.title} →
               </Link>
             )}
@@ -87,19 +86,15 @@ export const pageQuery = graphql`
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
       frontmatter {
         title
+        permalink
       }
     }
     next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
       frontmatter {
         title
+        permalink
       }
     }
   }

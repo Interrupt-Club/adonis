@@ -3,30 +3,18 @@ import { PageProps } from "gatsby"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 
-const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location }) => {
+const TopicPage: React.FC<PageProps<Queries.TopicPageQuery>> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location}>
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
-
   return (
     <Layout location={location}>
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title
+    <ol style={{ listStyle: `none` }}>
+        {posts?.map(post => {
+          const title = post?.frontmatter?.title
 
           return (
-            <li key={post.frontmatter.permalink}>
+            <li key={post?.frontmatter?.permalink}>
               <article
                 className="post-list-item"
                 itemScope
@@ -34,16 +22,19 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location
               >
                 <header>
                   <h2>
-                    <Link to={post.frontmatter.permalink} itemProp="url">
+                    <Link
+                      to={post?.frontmatter?.permalink || ""}
+                      itemProp="url"
+                    >
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <small>{post?.frontmatter?.date}</small>
                 </header>
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
+                      __html: post?.frontmatter?.excerpt || "",
                     }}
                     itemProp="description"
                   />
@@ -57,22 +48,26 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data, location
   )
 }
 
-export default IndexPage
+export default TopicPage
 
 export const pageQuery = graphql`
-  query IndexPage{
+  query TopicPage($topic: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { topics: { eq: $topic } } }
+    ) {
       nodes {
         excerpt
+        fields {
+          slug
+        }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
           title
-          description
           permalink
         }
       }

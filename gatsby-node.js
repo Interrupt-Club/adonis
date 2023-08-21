@@ -8,7 +8,7 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Define the template for blog post
-const blogPost = path.resolve(`./src/templates/blog-post.js`)
+const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -16,50 +16,9 @@ const blogPost = path.resolve(`./src/templates/blog-post.js`)
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  // Get all markdown blog posts sorted by date
-  const result = await graphql(`
-    {
-      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
-        nodes {
-          id
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  `)
-
-  if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      result.errors
-    )
-    return
-  }
-
-  const posts = result.data.allMarkdownRemark.nodes
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-
-      createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
-    })
-  }
+  const posts = await getAllArticles(graphql, reporter);
+  await createArticlePages(posts, createPage)
+  await createTopicPages(posts, createPage)
 }
 
 /**
@@ -111,4 +70,82 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
     }
   `)
+}
+
+
+const createArticlePages = async (posts, createPage) => {
+  if (posts.length > 0) {
+    posts.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : posts[index - 1].id
+      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+
+      createPage({
+        path: post.frontmatter.permalink,
+        component: blogPost,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
+        },
+      })
+    })
+  }
+}
+
+const createTopicPages = async (posts, createPage) => {
+
+  const uniqueTopics = getUniqueTopics(posts)
+
+  uniqueTopics.forEach(topic => {
+    createPage({
+      path: `topic/${topic.toLowerCase()}`,
+      component: path.resolve(`./src/templates/topic-page.tsx`),
+      context: {
+        topic: topic,
+      },
+    }) 
+  })
+}
+
+const getAllArticles = async (graphql, reporter) => {
+  const result = await graphql(`
+  {
+    allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+      nodes {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          permalink
+          topics
+        }
+      }
+    }
+  }
+  `)
+
+  if (result.errors) {
+  reporter.panicOnBuild(
+    `There was an error loading your blog posts`,
+    result.errors
+  )
+  return
+  }
+
+  return result.data.allMarkdownRemark.nodes
+}
+
+const getUniqueTopics = (posts) => {
+  const uniqueTopics = []
+
+  posts.forEach(post => {
+    post?.frontmatter?.topics?.forEach(cat => {
+      if (uniqueTopics.indexOf(cat) === -1) {
+        uniqueTopics.push(cat)
+      }
+    })
+  })
+
+  return uniqueTopics
 }

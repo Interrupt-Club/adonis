@@ -15,7 +15,7 @@ body {
   font-family: var(--fontFamily-secondary);
   font-weight: var(--fontWeight-secondary-normal);
   font-size: var(--fontSize-1);
-  color: var(--color-text);
+  color: var(--color-textPrimary);
   background: var(--color-bg);
 }
 
@@ -27,6 +27,10 @@ body {
 
 .header-link {
   color: var(--color-textGreyLight);
+}
+
+a.header-link:hover {
+  color: var(--color-blue);
 }
 
 .header-logo-title {
@@ -61,8 +65,13 @@ body {
 /* NEWSLETTER */
 
 .newsletter {
-  background-image: url("https://mhgstudio.com.au/wp-content/uploads/2022/11/Main-Gradient-Background-min.png");
-  background-size: 100% 100%;
+  /* background-image: url("https://mhgstudio.com.au/wp-content/uploads/2022/11/Main-Gradient-Background-min.png");
+  background-size: 100% 100%; */
+  background: var(--color-green)
+}
+
+.newsletter .tnc-link {
+  color: var(--color-textPrimary)
 }
 
 .newsletter-email {
