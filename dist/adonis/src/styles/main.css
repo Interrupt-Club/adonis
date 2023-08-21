@@ -1,0 +1,101 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: var(--lineHeight-normal);
+  font-size: var(--fontSize-root);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--fontFamily-secondary);
+  font-weight: var(--fontWeight-secondary-normal);
+  font-size: var(--fontSize-1);
+  color: var(--color-textPrimary);
+  background: var(--color-bg);
+}
+
+/* Header */
+
+.header-container {
+  background: var(--color-bg);
+}
+
+.header-link {
+  color: var(--color-textGreyLight);
+}
+
+a.header-link:hover {
+  color: var(--color-blue);
+}
+
+.header-logo-title {
+  font-size: var(--fontSize-3) !important;
+  margin: 0;
+}
+
+.header-logo-title span {
+  font-size: var(--fontSize-1) !important;
+}
+
+/* Blog Post */
+
+.content-area h1 {
+  font-family: var(--fontFamily-primary);
+  font-weight: 700;
+  font-size: var(--fontSize-6);
+  line-height: var(--lineHeight-tight);
+}
+
+.content-area h2 {
+  font-family: var(--fontFamily-primary);
+  font-weight: 700;
+  font-size: var(--fontSize-4);
+  line-height: var(--lineHeight-tight);
+}
+
+.content-area p {
+  margin-bottom: var(--spacing-8);
+}
+
+/* NEWSLETTER */
+
+.newsletter {
+  /* background-image: url("https://mhgstudio.com.au/wp-content/uploads/2022/11/Main-Gradient-Background-min.png");
+  background-size: 100% 100%; */
+  background: var(--color-green)
+}
+
+.newsletter .tnc-link {
+  color: var(--color-textPrimary)
+}
+
+.newsletter-email {
+ background-color: var(--color-baseWhite);
+ color: var(--color-textGrey);
+}
+
+.newsletter-btn {
+  background: black;
+  font-size: var(--fontSize-1);
+}
+
+/* FOOTER */
+
+.footer {
+  background: var(--color-bgLight);
+  color: var(--color-textGrey);
+}
+
+.footer .footer-header {
+  color: var(--color-baseWhite);
+  font-family: var(--fontFamily-primary);
+}
+
+.footer a {
+  color: var(--color-textGrey)
+}

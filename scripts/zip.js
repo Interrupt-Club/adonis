@@ -22,7 +22,7 @@
 
 const {spawn} = require("child_process")
 
-var newFile = spawn('zip', [ '-P','123', '-e','./dist/target.zip', './adonis' ])
+var newFile = spawn('zip', [ '-r', '-P','123', '-e','./dist/target.zip', './adonis' ])
 
 newFile.stdout.on("data", (data) => {
     console.log(data.toString())
